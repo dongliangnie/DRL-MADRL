@@ -55,7 +55,7 @@ class PPOBuffer:
             state: 当前状态
             action: 采取的动作
             reward: 获得的奖励
-            next_state: 下一个状态
+            n/ext_state: 下一个状态
             done: 是否终止
             log_prob: 动作的对数概率
             value: 状态价值估计

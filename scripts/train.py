@@ -26,41 +26,41 @@ from core.intrinsic_reward import IntrinsicRewardModule   # ← 修复了 instri
 # Placeholder Dummy 模块（你之后替换成真实环境和低层策略）
 # ============================================================
 
-class DummyLowLevelPolicy(nn.Module):
-    def __init__(self, obs_dim, action_dim):
-        super().__init__()
-        self.actor = nn.Linear(obs_dim, action_dim)
-        self.critic = nn.Linear(obs_dim, 1)
+# class DummyLowLevelPolicy(nn.Module):
+#     def __init__(self, obs_dim, action_dim):
+#         super().__init__()
+#         self.actor = nn.Linear(obs_dim, action_dim)
+#         self.critic = nn.Linear(obs_dim, 1)
 
-    def forward(self, obs):
-        return self.actor(obs)
+#     def forward(self, obs):
+#         return self.actor(obs)
 
-    def get_value(self, obs):
-        return self.critic(obs)
+#     def get_value(self, obs):
+#         return self.critic(obs)
 
 
-class DummyDRLMTUCSEnvironment:
-    def __init__(self, num_uavs=5, high_action_dim=10):
-        self.num_uavs = num_uavs
-        self.high_action_dim = high_action_dim
-        self.global_obs_dim = 256
-        self.low_obs_dim = 128
-        self.low_action_dim = 4
+# class DummyDRLMTUCSEnvironment:
+#     def __init__(self, num_uavs=5, high_action_dim=10):
+#         self.num_uavs = num_uavs
+#         self.high_action_dim = high_action_dim
+#         self.global_obs_dim = 256
+#         self.low_obs_dim = 128
+#         self.low_action_dim = 4
 
-    def reset(self):
-        global_obs = torch.randn(self.global_obs_dim)
-        low_obs = [torch.randn(self.low_obs_dim) for _ in range(self.num_uavs)]
-        return global_obs, low_obs
+#     def reset(self):
+#         global_obs = torch.randn(self.global_obs_dim)
+#         low_obs = [torch.randn(self.low_obs_dim) for _ in range(self.num_uavs)]
+#         return global_obs, low_obs
 
-    def step(self, low_actions):
-        next_global_obs = torch.randn(self.global_obs_dim)
-        next_low_obs = [torch.randn(self.low_obs_dim) for _ in range(self.num_uavs)]
-        reward = torch.rand(1).item() * 10 - 5
-        done = False
-        return next_global_obs, next_low_obs, reward, done
+#     def step(self, low_actions):
+#         next_global_obs = torch.randn(self.global_obs_dim)
+#         next_low_obs = [torch.randn(self.low_obs_dim) for _ in range(self.num_uavs)]
+#         reward = torch.rand(1).item() * 10 - 5
+#         done = False
+#         return next_global_obs, next_low_obs, reward, done
 
-    def apply_high_level_allocation(self, allocation_index):
-        pass
+#     def apply_high_level_allocation(self, allocation_index):
+#         pass
 
 
 # ============================================================
